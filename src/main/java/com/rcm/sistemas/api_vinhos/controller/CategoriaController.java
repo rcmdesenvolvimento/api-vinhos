@@ -1,11 +1,13 @@
 package com.rcm.sistemas.api_vinhos.controller;
 
+import com.rcm.sistemas.api_vinhos.domain.dto.CategoriaDto;
 import com.rcm.sistemas.api_vinhos.domain.entities.Categoria;
+import com.rcm.sistemas.api_vinhos.modelmapper.Assembler.CategoriaModelAssembler;
 import com.rcm.sistemas.api_vinhos.service.CategoriaService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,9 +16,12 @@ import java.util.List;
 public class CategoriaController {
 
     private final CategoriaService categoriaService;
+    private final CategoriaModelAssembler categoriaModelAssembler;
 
-    public CategoriaController(CategoriaService categoriaService) {
+    public CategoriaController(CategoriaService categoriaService,
+                               CategoriaModelAssembler categoriaModelAssembler) {
         this.categoriaService = categoriaService;
+        this.categoriaModelAssembler = categoriaModelAssembler;
     }
 
     @GetMapping
@@ -24,4 +29,10 @@ public class CategoriaController {
         return ResponseEntity.ok(this.categoriaService.listAllCategoria());
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public CategoriaDto salvar(@RequestBody @Valid CategoriaDto categoriaDto) {
+        Categoria categoria = categoriaModelAssembler.toDomain(categoriaDto);
+        return this.categoriaModelAssembler.toModel(this.categoriaService.salvar(categoria));
+    }
 }

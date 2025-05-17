@@ -2,6 +2,7 @@ package com.rcm.sistemas.api_vinhos.service;
 
 import com.rcm.sistemas.api_vinhos.domain.entities.Categoria;
 import com.rcm.sistemas.api_vinhos.repository.CategoriaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,5 +18,10 @@ public class CategoriaService {
 
     public List<Categoria> listAllCategoria() {
         return this.categoriaRepository.findAll();
+    }
+
+    @Transactional
+    public Categoria salvar(Categoria categoria){
+        return this.categoriaRepository.save(categoria);
     }
 }
