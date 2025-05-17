@@ -5,10 +5,12 @@ import com.rcm.sistemas.api_vinhos.domain.entities.Produto;
 import com.rcm.sistemas.api_vinhos.service.ProdutoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/produto")
@@ -25,8 +27,8 @@ public class ProdutoController {
         return ResponseEntity.ok(this.produtoService.listAllProduto());
     }
 
-    @GetMapping("/ProdutoCategoria")
-    public ResponseEntity<List<Produto>> listAllProdutoDto() {
-        return ResponseEntity.ok(this.produtoService.listAllProdutoDto());
+    @GetMapping("/ProdutoCategoria/{id}")
+    public ResponseEntity<Optional<CategoriaProdutoDto>> ProdutoById(@PathVariable Long id) {
+        return ResponseEntity.ok(this.produtoService.ProdutoByID(id));
     }
 }

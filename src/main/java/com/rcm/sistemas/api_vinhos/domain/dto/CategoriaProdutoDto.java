@@ -1,18 +1,22 @@
 package com.rcm.sistemas.api_vinhos.domain.dto;
 
-import jakarta.persistence.Column;
+import com.rcm.sistemas.api_vinhos.domain.entities.Produto;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class CategoriaProdutoDto {
 
-    public CategoriaProdutoDto(String produtoNome, String categoriaNome) {
-        ProdutoNome = produtoNome;
-        CategoriaNome = categoriaNome;
+    public CategoriaProdutoDto() {
     }
 
-    @Column(name = "prod_nome")
-    private String ProdutoNome;
+    public CategoriaProdutoDto(Produto produto) {
+        ProdutoNome = produto.getNome();
+        CategoriaNome = produto.getCategoria().getNome().toLowerCase();
+    }
 
-    @Column(name = "cat_nome")
+    private String ProdutoNome;
     private String CategoriaNome;
 
 }
