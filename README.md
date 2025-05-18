@@ -5,5 +5,5 @@
   <li>Spring Boot 3</li>
    <li>Spring Data</li>
   <li>Model Mapper</li>
-  <li>My SQL</li>
+  <li>MySQL</li>
 </ul>
