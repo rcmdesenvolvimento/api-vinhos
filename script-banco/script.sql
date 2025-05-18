@@ -30,14 +30,11 @@ insert into produto(prod_id,prod_nome, prod_quantidade,prod_preco,categ_id) valu
 insert into produto(prod_id,prod_nome, prod_quantidade,prod_preco,categ_id) values(7,'Vinho Argentino Trivento Eolo Malbec',300,949.90,2);
 insert into produto(prod_id,prod_nome, prod_quantidade,prod_preco,categ_id) values(8,'Vinho Argentino Trivento Golden Reserve Malbec 750ml 2019',350,159.00,2);
 
-select * from produto;
+select * from produto; 
+select * from categoria;
 
-Select cat.categ_id, cat.categ_nome as nomeCategoria, 
-                           prod.prod_id,prod.prod_nome, prod.prod_preco, prod.prod_quantidade 
-                           from categoria cat join produto prod on cat.categ_id = prod.categ_id;
-
-
-
+delete from produto where prod_id >= 9;
+delete from categoria where categ_id >=3;
 
 
 
