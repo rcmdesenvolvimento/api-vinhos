@@ -4,19 +4,13 @@ import com.rcm.sistemas.api_vinhos.domain.entities.Produto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 public class CategoriaProdutoDto {
 
-    public CategoriaProdutoDto() {
-    }
-
-    public CategoriaProdutoDto(Produto produto) {
-        ProdutoNome = produto.getNome();
-        CategoriaNome = produto.getCategoria().getNome().toLowerCase();
-    }
-
-    private String ProdutoNome;
-    private String CategoriaNome;
-
+    private String nome;
+    private List<Produto> produtos = new ArrayList<>();
 }

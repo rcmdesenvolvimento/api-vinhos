@@ -34,7 +34,7 @@ public class Produto {
     private BigDecimal preco;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "categ_id", referencedColumnName = "categ_id")
     private Categoria categoria;
 }

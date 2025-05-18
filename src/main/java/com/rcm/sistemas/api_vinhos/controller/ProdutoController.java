@@ -1,6 +1,6 @@
 package com.rcm.sistemas.api_vinhos.controller;
 
-import com.rcm.sistemas.api_vinhos.domain.dto.CategoriaProdutoDto;
+import com.rcm.sistemas.api_vinhos.domain.dto.ProdutoCategoriaDto;
 import com.rcm.sistemas.api_vinhos.domain.entities.Produto;
 import com.rcm.sistemas.api_vinhos.service.ProdutoService;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +28,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/ProdutoCategoria/{id}")
-    public ResponseEntity<Optional<CategoriaProdutoDto>> ProdutoById(@PathVariable Long id) {
+    public ResponseEntity<Optional<ProdutoCategoriaDto>> ProdutoById(@PathVariable Long id) {
         return ResponseEntity.ok(this.produtoService.ProdutoByID(id));
     }
 }

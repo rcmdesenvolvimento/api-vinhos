@@ -27,7 +27,7 @@ public class CategoriaModelAssembler {
 
     public List<CategoriaDto> toCollectionModel(List<Categoria> categorias) {
         return categorias.stream()
-                .map(this::toModel)
+                .map(categoria -> toModel(categoria))
                 .collect(Collectors.toList());
     }
 }

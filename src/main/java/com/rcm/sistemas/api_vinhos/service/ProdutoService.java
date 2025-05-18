@@ -1,6 +1,6 @@
 package com.rcm.sistemas.api_vinhos.service;
 
-import com.rcm.sistemas.api_vinhos.domain.dto.CategoriaProdutoDto;
+import com.rcm.sistemas.api_vinhos.domain.dto.ProdutoCategoriaDto;
 import com.rcm.sistemas.api_vinhos.domain.entities.Produto;
 import com.rcm.sistemas.api_vinhos.repository.ProdutoRepository;
 import org.springframework.stereotype.Service;
@@ -18,15 +18,13 @@ public class ProdutoService {
     }
 
     public List<Produto> listAllProduto() {
-        List<Produto> lst = this.produtoRepository.findAll();
         return this.produtoRepository.findAll();
     }
 
-    public Optional<CategoriaProdutoDto> ProdutoByID(Long id) {
+    public Optional<ProdutoCategoriaDto> ProdutoByID(Long id) {
         Optional<Produto> produto = this.produtoRepository.findById(id);
-        CategoriaProdutoDto dto = new CategoriaProdutoDto(produto.get());
+        ProdutoCategoriaDto dto = new ProdutoCategoriaDto(produto.get());
         return Optional.of(dto);
     }
-
 
 }

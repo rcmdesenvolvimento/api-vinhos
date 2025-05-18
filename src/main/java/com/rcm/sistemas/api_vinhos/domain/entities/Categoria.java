@@ -1,5 +1,6 @@
 package com.rcm.sistemas.api_vinhos.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

@@ -1,6 +1,7 @@
 package com.rcm.sistemas.api_vinhos.controller;
 
 import com.rcm.sistemas.api_vinhos.domain.dto.CategoriaDto;
+import com.rcm.sistemas.api_vinhos.domain.dto.CategoriaProdutoDto;
 import com.rcm.sistemas.api_vinhos.domain.entities.Categoria;
 import com.rcm.sistemas.api_vinhos.modelmapper.Assembler.CategoriaModelAssembler;
 import com.rcm.sistemas.api_vinhos.service.CategoriaService;
@@ -24,14 +25,23 @@ public class CategoriaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Categoria>> listAllCategoria() {
-        return ResponseEntity.ok(this.categoriaService.listAllCategoria());
+    public ResponseEntity<List<CategoriaDto>> listAllCategoria() {
+        return ResponseEntity.ok(this.categoriaModelAssembler.toCollectionModel(this.categoriaService.listAllCategoria()));
     }
+
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public CategoriaDto salvar(@RequestBody CategoriaDto categoriaDto) {
+//        Categoria categoria = categoriaModelAssembler.toDomain(categoriaDto);
+//        categoria.setProdutos(categoriaDto.getProdutos());
+//        return this.categoriaModelAssembler.toModel(this.categoriaService.salvar(categoria));
+//    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CategoriaDto salvar(@RequestBody CategoriaDto categoriaDto) {
-        Categoria categoria = categoriaModelAssembler.toDomain(categoriaDto);
-        return this.categoriaModelAssembler.toModel(this.categoriaService.salvar(categoria));
+    public Categoria salvar(@RequestBody Categoria categoria) {
+        //Categoria categoria = categoriaModelAssembler.toDomain(categoriaDto);
+        //categoria.setProdutos(categoria.getProdutos());
+        return this.categoriaService.salvar(categoria);
     }
 }
