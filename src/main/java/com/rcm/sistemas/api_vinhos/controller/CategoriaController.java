@@ -30,19 +30,18 @@ public class CategoriaController {
         return ResponseEntity.ok(this.categoriaModelAssembler.toCollectionModel(this.categoriaService.listAllCategoria()));
     }
 
-//    @PostMapping
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public CategoriaDto salvar(@RequestBody CategoriaDto categoriaDto) {
-//        Categoria categoria = categoriaModelAssembler.toDomain(categoriaDto);
-//        categoria.setProdutos(categoriaDto.getProdutos());
-//        return this.categoriaModelAssembler.toModel(this.categoriaService.salvar(categoria));
-//    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Categoria salvar(@RequestBody Categoria categoria) {
-        //Categoria categoria = categoriaModelAssembler.toDomain(categoriaDto);
-        //categoria.setProdutos(categoria.getProdutos());
-        return this.categoriaService.salvar(categoria);
+    public CategoriaDto salvar(@RequestBody CategoriaDto categoriaDto) {
+        Categoria categoria = categoriaModelAssembler.toDomain(categoriaDto);
+        return this.categoriaModelAssembler.toModel(this.categoriaService.salvar(categoria));
     }
+
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Categoria salvar(@RequestBody Categoria categoria) {
+//        //Categoria categoria = categoriaModelAssembler.toDomain(categoriaDto);
+//        //categoria.setProdutos(categoria.getProdutos());
+//        return this.categoriaService.salvar(categoria);
+//    }
 }
