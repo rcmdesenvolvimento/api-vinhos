@@ -26,5 +26,4 @@ public class ProdutoService {
         ProdutoCategoriaDto dto = new ProdutoCategoriaDto(produto.get());
         return Optional.of(dto);
     }
-
 }

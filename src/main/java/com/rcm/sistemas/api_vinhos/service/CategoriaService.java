@@ -34,4 +34,9 @@ public class CategoriaService {
         return cat;
     }
 
+    public Boolean buscaCategoria(Long id) {
+        return this.categoriaRepository.existsById(id);
+    }
+
+
 }

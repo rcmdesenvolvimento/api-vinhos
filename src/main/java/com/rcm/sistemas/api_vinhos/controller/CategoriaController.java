@@ -1,11 +1,9 @@
 package com.rcm.sistemas.api_vinhos.controller;
 
 import com.rcm.sistemas.api_vinhos.domain.dto.CategoriaDto;
-import com.rcm.sistemas.api_vinhos.domain.dto.CategoriaProdutoDto;
 import com.rcm.sistemas.api_vinhos.domain.entities.Categoria;
 import com.rcm.sistemas.api_vinhos.modelmapper.Assembler.CategoriaModelAssembler;
 import com.rcm.sistemas.api_vinhos.service.CategoriaService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

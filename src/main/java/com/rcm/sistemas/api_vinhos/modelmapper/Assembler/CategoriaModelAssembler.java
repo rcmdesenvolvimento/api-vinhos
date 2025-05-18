@@ -30,4 +30,8 @@ public class CategoriaModelAssembler {
                 .map(categoria -> toModel(categoria))
                 .collect(Collectors.toList());
     }
+
+    public Categoria toDomainz(Object objectDto) {
+        return modelMapper.map(objectDto, Categoria.class);
+    }
 }
