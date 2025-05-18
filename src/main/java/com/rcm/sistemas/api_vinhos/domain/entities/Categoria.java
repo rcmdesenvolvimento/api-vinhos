@@ -23,6 +23,7 @@ public class Categoria {
     @Column(name = "categ_nome", length = 100, nullable = false)
     private String nome;
 
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "categoria")
     private List<Produto> produtos = new ArrayList<>();
 

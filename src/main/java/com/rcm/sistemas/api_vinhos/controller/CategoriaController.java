@@ -4,7 +4,6 @@ import com.rcm.sistemas.api_vinhos.domain.dto.CategoriaDto;
 import com.rcm.sistemas.api_vinhos.domain.entities.Categoria;
 import com.rcm.sistemas.api_vinhos.modelmapper.Assembler.CategoriaModelAssembler;
 import com.rcm.sistemas.api_vinhos.service.CategoriaService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +30,7 @@ public class CategoriaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CategoriaDto salvar(@RequestBody @Valid CategoriaDto categoriaDto) {
+    public CategoriaDto salvar(@RequestBody CategoriaDto categoriaDto) {
         Categoria categoria = categoriaModelAssembler.toDomain(categoriaDto);
         return this.categoriaModelAssembler.toModel(this.categoriaService.salvar(categoria));
     }
