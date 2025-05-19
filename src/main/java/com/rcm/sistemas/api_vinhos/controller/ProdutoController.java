@@ -4,9 +4,12 @@ import com.rcm.sistemas.api_vinhos.domain.dto.ProdutoCategoriaDto;
 import com.rcm.sistemas.api_vinhos.domain.entities.Produto;
 import com.rcm.sistemas.api_vinhos.service.CategoriaService;
 import com.rcm.sistemas.api_vinhos.service.ProdutoService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,14 +36,10 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> salvar(@RequestBody Produto produto) {
-        Produto prod = produto;
-        System.out.println(prod.getCategoria().getId());
-        if (this.categoriaService.buscaCategoria(prod.getCategoria().getId())) {
-            System.out.println("Categoria existe");
-            return null;
+    public ResponseEntity<Produto> salvar(@RequestBody Produto produto) {
+        if (!this.categoriaService.buscaCategoria(produto.getCategoria().getId())) {
+            return ResponseEntity.badRequest().build();
         }
-        System.out.println("Categoria não existe");
-        return null;
+        return ResponseEntity.ok(this.produtoService.salvar(produto));
     }
 }

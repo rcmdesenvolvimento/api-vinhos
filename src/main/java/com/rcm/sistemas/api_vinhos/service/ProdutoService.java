@@ -26,4 +26,8 @@ public class ProdutoService {
         ProdutoCategoriaDto dto = new ProdutoCategoriaDto(produto.get());
         return Optional.of(dto);
     }
+
+    public Produto salvar(Produto produto) {
+        return this.produtoRepository.save(produto);
+    }
 }
