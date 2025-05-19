@@ -6,4 +6,5 @@
    <li>Spring Data</li>
   <li>Model Mapper Versão 3.0.0</li>
   <li>MySQL</li>
+  <li>Lombok</li>
 </ul>
